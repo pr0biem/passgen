@@ -15,6 +15,8 @@ gen_3 = Proc.new do
 		end
 	end
 end
+quit = nil
+until quit == "quit"
 yn = nil
 puts "Would you like to use words and symbols in your password?"
 puts "If no, random letters and symbols will be used"
@@ -24,7 +26,7 @@ if yn == "yes"
 	puts "How many words/symbols do you want in your password?"
 	puts "Please enter value in number format(1,2,3...etc)"
 	u = gets.chomp.to_i
-	until u.is_a? Integer
+	until u >= 1
 		puts "I'm sorry, you need to put in a valid number"
 		u = gets.chomp.to_i
 	end
@@ -40,11 +42,12 @@ if yn == "yes"
 		arr = []
 		proccount += 1
 	end
+	print "\n-----------------------------------------------------------------\n"
 elsif yn == "no"
 	puts "How long would you like your password to be?"
 	puts "Please enter value in number format(1,2,3...etc)"
 	u = gets.chomp.to_i
-	until u.is_a? Integer
+	until u >= 1
 		puts "I'm sorry, you need to put in a valid number"
 		u = gets.chomp.to_i
 	end
@@ -58,7 +61,16 @@ elsif yn == "no"
 		yn = "no"
 		proccount += 1
 	end
+	print "\n-----------------------------------------------------------------\n"
 else
 		puts "I'm sorry, try again. This is a simple yes or no question."
-end
+	end
+	end
+	puts "Type quit to close the program"
+	puts "Anything else will generate another password"
+	quit = gets.chomp.downcase
+	if quit == "quit"
+		puts "Goodbye!"
+		sleep(5)
+	end
 end
