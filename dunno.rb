@@ -1,17 +1,16 @@
 require './dice.rb'
 require './DiceExtend.rb'
+require './Rand'
 arr = []
 gen_5 = Proc.new do
-	5.times { |x| x = arr.push(rand(1..6)) }
+	5.times {arr.push(Rand.true_rand(6))}
 end
 gen_3 = Proc.new do
-	3.times do |x| 
-		x = arr.push(rand(1..6))
+	3.times do 
+			arr.push(Rand.true_rand(6))
 		until arr.join.to_i <= 612
 			arr = []
-			3.times do |x| 
-				x = arr.push(rand(1..6)) 
-			end
+			3.times {arr.push(Rand.true_rand(6))}
 		end
 	end
 end
